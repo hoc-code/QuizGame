@@ -11,7 +11,7 @@ class RouterConfigCustom {
       GoRoute(
         path: RoutersPath.homePath,
         builder: (BuildContext context, GoRouterState state) {
-          return const ArticlePage();
+          return const HomePage();
         },
         routes: <RouteBase>[
           GoRoute(
