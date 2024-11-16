@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_game/apps/routes/routers.dart';
 
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -10,8 +9,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light().copyWith(
-        useMaterial3: true,
-      ),
+          useMaterial3: true,
+          textTheme: const TextTheme(
+            bodyMedium: TextStyle(
+              color: Colors.white,
+            ),
+          )),
       routerConfig: RouterConfigCustom.router,
     );
   }
