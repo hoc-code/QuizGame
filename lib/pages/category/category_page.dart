@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:quiz_game/apps/routes/router_name.dart';
-import 'package:quiz_game/apps/routes/routers.dart';
+import 'package:quiz_game/apps/utils/const.dart';
+import 'package:quiz_game/widgets/Backgroud_custom.dart';
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({super.key});
@@ -9,16 +8,33 @@ class CategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('CategoryPage'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: (){
-            context.goNamed(RoutersName.articleName);
-          },
-          child: const Text('change page category'),
-        ),
+      body: Stack(
+        children: [
+          const BackgroudCustom(),
+          SafeArea(
+            child: GridView.builder(
+              padding: EdgeInsets.symmetric(horizontal: paddingCustom(context)),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                childAspectRatio: 2 / 1,
+              ),
+              itemCount: 10,
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.primaries[index],
+                  ),
+                  child: Align(
+                    child: Text('Items + $index'),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

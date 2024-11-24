@@ -3,8 +3,8 @@ import 'package:quiz_game/apps/utils/const.dart';
 
 class ButtonCustom extends StatelessWidget {
   String title;
-
-  ButtonCustom({super.key, required this.title});
+  Function onTap;
+  ButtonCustom({super.key, required this.title, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

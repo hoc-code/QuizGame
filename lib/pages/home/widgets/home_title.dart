@@ -17,7 +17,7 @@ class HomeTitle extends StatelessWidget {
         SizedBox(
           height: getHeight(context) * 0.02,
         ),
-        const Text("Bộ câu hỏi trắc nghiệm lập trình tại LongDev"),
+        const Text("Bộ câu hỏi trắc nghiệm lập trình tại LongPeDev"),
         SizedBox(height: getHeight(context) * 0.06),
       ],
     );
