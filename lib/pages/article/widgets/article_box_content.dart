@@ -6,6 +6,8 @@ import 'package:quiz_game/apps/utils/const.dart';
 import 'package:quiz_game/apps/utils/parse_html.dart';
 import 'package:quiz_game/widgets/Button_custom.dart';
 
+import 'article_modal.dart';
+
 class ArticleBoxContent extends StatefulWidget {
   const ArticleBoxContent({super.key});
 
@@ -16,9 +18,10 @@ class ArticleBoxContent extends StatefulWidget {
 class _ArticleBoxContentState extends State<ArticleBoxContent> {
   final PageController pageController = PageController();
 
-  void handleSumit() async{
+  void handleSumit() async {
     await showModal(context);
   }
+
   @override
   Widget build(BuildContext context) {
     return ExpandablePageView.builder(
@@ -70,9 +73,9 @@ class _ArticleBoxContentState extends State<ArticleBoxContent> {
               ),
               SizedBox(height: getHeight(context) * 0.02),
               TextFormField(
-                onChanged: (_){},
+                onChanged: (_) {},
                 textInputAction: TextInputAction.done,
-                onFieldSubmitted: (value){},
+                onFieldSubmitted: (value) {},
                 style: const TextStyle(
                   color: Colors.black,
                 ),
@@ -84,10 +87,10 @@ class _ArticleBoxContentState extends State<ArticleBoxContent> {
                       borderSide: BorderSide(color: Colors.black),
                     ),
                     hintText: 'Nhập đáp án của bạn tại đây'),
-                ),
+              ),
               SizedBox(height: getHeight(context) * 0.02),
               ButtonCustom(
-                onTap: handleSumit,
+                  onTap: handleSumit,
                   title: "Xem kết quả"),
             ],
           ),

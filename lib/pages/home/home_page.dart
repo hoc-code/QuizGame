@@ -26,7 +26,11 @@ class HomePage extends StatelessWidget {
                   const HomeTitle(),
                   const HomDropdown(),
                   SizedBox(height: getHeight(context)* 0.06,),
-                  ButtonCustom(title: 'Bắt đầu thực hành',),
+                  ButtonCustom(
+                    title: 'Bắt đầu thực hành',
+                    onTap: () {
+                      print('Button pressed!');
+                    },),
                 ],
               ),
             ),
