@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_game/apps/utils/const.dart';
-import 'package:quiz_game/pages/article/widgets/artice_loading.dart';
+import 'package:quiz_game/pages/article/widgets/article_loading.dart';
 import 'package:quiz_game/pages/article/widgets/article_box_content.dart';
 import 'package:quiz_game/pages/article/widgets/article_title.dart';
 import 'package:quiz_game/widgets/Backgroud_custom.dart';

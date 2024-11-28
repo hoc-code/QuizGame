@@ -70,15 +70,15 @@ class _ArticleYoutubeState extends State<ArticleYoutube> {
       child: YoutubePlayerBuilder(
         onEnterFullScreen: () {},
         player: YoutubePlayer(
-          bottomActions: [
-            const SizedBox(width: 14.0),
+          bottomActions: const [
+            SizedBox(width: 14.0),
             CurrentPosition(),
-            const SizedBox(width: 8.0),
+            SizedBox(width: 8.0),
             ProgressBar(
               isExpanded: true,
             ),
             RemainingDuration(),
-            const PlaybackSpeedButton(),
+            PlaybackSpeedButton(),
           ],
           aspectRatio: 16 / 9,
           onReady: () {

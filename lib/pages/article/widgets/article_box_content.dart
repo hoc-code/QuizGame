@@ -18,7 +18,7 @@ class ArticleBoxContent extends StatefulWidget {
 class _ArticleBoxContentState extends State<ArticleBoxContent> {
   final PageController pageController = PageController();
 
-  void handleSumit() async {
+  void handleSubmit() async {
     await showModal(context);
   }
 
@@ -26,7 +26,7 @@ class _ArticleBoxContentState extends State<ArticleBoxContent> {
   Widget build(BuildContext context) {
     return ExpandablePageView.builder(
       controller: pageController,
-      itemCount: 3,
+      itemCount: 4,
       itemBuilder: (BuildContext context, int) {
         return Container(
           margin: const EdgeInsets.all(10.0),
@@ -89,9 +89,7 @@ class _ArticleBoxContentState extends State<ArticleBoxContent> {
                     hintText: 'Nhập đáp án của bạn tại đây'),
               ),
               SizedBox(height: getHeight(context) * 0.02),
-              ButtonCustom(
-                  onTap: handleSumit,
-                  title: "Xem kết quả"),
+              ButtonCustom(onTap: handleSubmit, title: "Xem kết quả"),
             ],
           ),
         );
