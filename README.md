@@ -1,7 +1,7 @@
 # quiz_game
 
-Nguồn ZendVN
-
+Nguồn ZendVN.
+Làm theo và phát triển thêm.
 
 ## Getting Started
 
