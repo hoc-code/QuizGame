@@ -1,6 +1,7 @@
 # quiz_game
 
-A new Flutter project.
+Nguồn ZendVN.
+Làm theo và phát triển thêm.
 
 ## Getting Started
 
