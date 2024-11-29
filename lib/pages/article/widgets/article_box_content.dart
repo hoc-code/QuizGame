@@ -4,7 +4,7 @@ import 'package:flutter_highlighter/flutter_highlighter.dart';
 import 'package:flutter_highlighter/themes/a11y-dark.dart';
 import 'package:quiz_game/apps/utils/const.dart';
 import 'package:quiz_game/apps/utils/parse_html.dart';
-import 'package:quiz_game/widgets/Button_custom.dart';
+import 'package:quiz_game/widgets/button_custom.dart';
 
 import 'article_modal.dart';
 

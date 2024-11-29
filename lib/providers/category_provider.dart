@@ -17,9 +17,9 @@ class CategoryProvider extends ChangeNotifier {
         notifyListeners();
     }
 
-    // Future<List<Category>> getListTopic() async {
-    //     List<Category> data =
-    //     await CategoryRepository().getTopic(idLanguageChoose as int);
-    //     return data;
-    // }
+    Future<List<Category>> getListTopic() async {
+        List<Category> data =
+        await CategoryRepository().getTopic(idLanguageChoose as int);
+        return data;
+    }
 }

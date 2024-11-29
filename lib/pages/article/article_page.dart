@@ -3,7 +3,7 @@ import 'package:quiz_game/apps/utils/const.dart';
 import 'package:quiz_game/pages/article/widgets/article_loading.dart';
 import 'package:quiz_game/pages/article/widgets/article_box_content.dart';
 import 'package:quiz_game/pages/article/widgets/article_title.dart';
-import 'package:quiz_game/widgets/Backgroud_custom.dart';
+import 'package:quiz_game/widgets/background_custom.dart';
 
 class ArticlePage extends StatelessWidget {
   const ArticlePage({super.key});
@@ -13,7 +13,7 @@ class ArticlePage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          const BackgroudCustom(),
+          const BackgroundCustom(),
           Positioned.fill(
             child: SafeArea(
                 child: Padding(

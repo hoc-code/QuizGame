@@ -10,7 +10,7 @@ class ButtonCustom extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       clipBehavior: Clip.hardEdge,
-      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+      borderRadius: const BorderRadius.all(Radius.circular(10.0)),
       child: InkWell(
         splashColor: Colors.amber,
         onTap: () {},
@@ -28,7 +28,7 @@ class ButtonCustom extends StatelessWidget {
           child: Align(
             child: Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 22,
                 color: Colors.white,
               ),

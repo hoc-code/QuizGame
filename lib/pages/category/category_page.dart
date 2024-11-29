@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:quiz_game/apps/utils/const.dart';
-import 'package:quiz_game/widgets/Backgroud_custom.dart';
+import 'package:quiz_game/providers/category_provider.dart';
+import 'package:quiz_game/widgets/background_custom.dart';
+import '../../models/category_model.dart';
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({super.key});
@@ -10,27 +13,43 @@ class CategoryPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          const BackgroudCustom(),
+          const BackgroundCustom(),
           SafeArea(
-            child: GridView.builder(
-              padding: EdgeInsets.symmetric(horizontal: paddingCustom(context)),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                childAspectRatio: 2 / 1,
-              ),
-              itemCount: 10,
-              itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.primaries[index],
-                  ),
-                  child: Align(
-                    child: Text('Items + $index'),
-                  ),
-                );
+            child: FutureBuilder(
+              future: context.read<CategoryProvider>().getListTopic(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  List<Category> data = snapshot.data as List<Category>;
+                  return GridView.builder(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: paddingCustom(context)),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 2 / 1,
+                    ),
+                    itemCount: data.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.primaries[index],
+                        ),
+                        child: Align(
+                          child: Text(data[index].name),
+                        ),
+                      );
+                    },
+                  );
+                } else {
+                  return Container(
+                    child: const Center(
+                      child: Text('No data'),
+                    ),
+                  );
+                }
               },
             ),
           ),
