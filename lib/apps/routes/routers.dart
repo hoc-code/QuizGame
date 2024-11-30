@@ -25,7 +25,14 @@ class RouterConfigCustom {
                 name: RoutersName.articleName,
                 path: RoutersName.articleName,
                 builder: (BuildContext context, GoRouterState state) {
-                  return const ArticlePage();
+                  Map data = state.extra as Map;
+
+                  int id = data['id'];
+                  String name = data['name'];
+                  return ArticlePage(
+                    idTopic: id,
+                    name: name,
+                  );
                 },
               ),
             ],

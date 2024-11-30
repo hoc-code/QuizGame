@@ -13,7 +13,7 @@ class ButtonCustom extends StatelessWidget {
       borderRadius: const BorderRadius.all(Radius.circular(10.0)),
       child: InkWell(
         splashColor: Colors.amber,
-        onTap: () {},
+        onTap: () => onTap(),
         child: Ink(
           padding: EdgeInsets.symmetric(vertical: getHeight(context) * 0.02),
           decoration: const BoxDecoration(

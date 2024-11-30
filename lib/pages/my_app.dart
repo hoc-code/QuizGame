@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:quiz_game/apps/routes/routers.dart';
 import 'package:quiz_game/providers/category_provider.dart';
 
+import '../providers/question_provider.dart';
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
@@ -12,9 +14,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => CategoryProvider()..getListLanguage(),
         ),
-        // ChangeNotifierProvider(
-        //   create: (_) => QuestionProvider(),
-        // )
+        ChangeNotifierProvider(
+          create: (_) => QuestionProvider(),
+        )
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

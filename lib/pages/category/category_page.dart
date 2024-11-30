@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:quiz_game/apps/routes/router_name.dart';
 import 'package:quiz_game/apps/utils/const.dart';
 import 'package:quiz_game/providers/category_provider.dart';
 import 'package:quiz_game/widgets/background_custom.dart';
@@ -32,13 +34,21 @@ class CategoryPage extends StatelessWidget {
                     ),
                     itemCount: data.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.primaries[index],
-                        ),
-                        child: Align(
-                          child: Text(data[index].name),
+                      return InkWell(
+                        onTap: (){
+                          context.goNamed(RoutersName.articleName, extra:{
+                            'id': data[index].id,
+                            "name": data[index].name,
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.primaries[index],
+                          ),
+                          child: Align(
+                            child: Text(data[index].name),
+                          ),
                         ),
                       );
                     },
