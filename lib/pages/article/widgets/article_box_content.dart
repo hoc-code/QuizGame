@@ -22,9 +22,11 @@ class ArticleBoxContent extends StatefulWidget {
 
 class _ArticleBoxContentState extends State<ArticleBoxContent> {
   final PageController pageController = PageController();
+  String valueInput = '';
 
-  void handleSubmit() async {
-    await showModal(context);
+  void handleSubmit(Question data) async {
+    if (valueInput.isEmpty) return;
+    await showModal(context, valueInput, data);
   }
 
   @override
@@ -32,6 +34,7 @@ class _ArticleBoxContentState extends State<ArticleBoxContent> {
     return FutureBuilder(
       future: context.read<QuestionProvider>().getQuestionList(widget.idTopic),
       builder: (context, snapshot) {
+
         if(snapshot.hasData){
           List<Question> data = snapshot.data as List<Question>;
           return ExpandablePageView.builder(
@@ -89,7 +92,7 @@ class _ArticleBoxContentState extends State<ArticleBoxContent> {
                     ),
                     SizedBox(height: getHeight(context) * 0.02),
                     TextFormField(
-                      onChanged: (_) {},
+                      onChanged: (value) => valueInput = value,
                       textInputAction: TextInputAction.done,
                       onFieldSubmitted: (value) {},
                       style: const TextStyle(
@@ -105,7 +108,9 @@ class _ArticleBoxContentState extends State<ArticleBoxContent> {
                           hintText: 'Nhập đáp án của bạn tại đây'),
                     ),
                     SizedBox(height: getHeight(context) * 0.02),
-                    ButtonCustom(onTap: handleSubmit, title: "Xem kết quả"),
+                    ButtonCustom(
+                        onTap: () => handleSubmit(data[index]),
+                        title: "Xem kết quả"),
                   ],
                 ),
               );

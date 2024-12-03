@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_game/apps/utils/const.dart';
+import 'package:quiz_game/models/question_model.dart';
 import 'package:quiz_game/pages/article/widgets/article_youtube.dart';
 
-Future<void> showModal(context) => showModalBottomSheet(
+Future<void> showModal(context, String valueInput, Question data) =>
+    showModalBottomSheet(
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       context: context,
@@ -23,48 +25,33 @@ Future<void> showModal(context) => showModalBottomSheet(
               Expanded(
                 child: Column(
                   children: [
-                    RichText(
-                      text: const TextSpan(
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                        ),
-                        children: [
-                          TextSpan(text: 'Đáp án'),
-                          TextSpan(
-                              text: '4',
-                              style: TextStyle(
-                                color: Colors.green,
-                                fontSize: 22,
-                              )),
-                          TextSpan(text: ' cua ban la chua chinh xac'),
-                          TextSpan(
-                            text: '5',
-                            style: TextStyle(
-                              color: Colors.green,
-                              fontSize: 22,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    (valueInput == data.answer)
+                        ? successAnswer(valueInput)
+                        : errorAnswer(valueInput, data.answer),
                     SizedBox(
                       height: getHeight(context) * 0.02,
                     ),
-                    RichText(
-                      text: const TextSpan(
-                          style: TextStyle(
-                            color: Colors.red,
-                            fontSize: 16,
-                          ),
-                          children: [
-                            TextSpan(text: 'Ban xem them video giai dap')
-                          ]),
-                    ),
+                    data.youtube_id_result!.isNotEmpty ||
+                            data.youtube_id_result == null
+                        ? RichText(
+                            text: const TextSpan(
+                                style: TextStyle(
+                                  color: Colors.red,
+                                  fontSize: 16,
+                                ),
+                                children: [
+                                  TextSpan(text: 'Ban xem them video giai dap')
+                                ]),
+                          )
+                        : const SizedBox(),
                     SizedBox(
                       height: getHeight(context) * 0.02,
                     ),
-                    Expanded(child: ArticleYoutube(id: 'WtLJlUdkWXI&list',) ),
+                    data.youtube_id_result!.isNotEmpty ||
+                            data.youtube_id_result == null
+                        ? Expanded(
+                            child: ArticleYoutube(id: data.youtube_id_result))
+                        : const SizedBox(),
                   ],
                 ),
               )
@@ -73,3 +60,47 @@ Future<void> showModal(context) => showModalBottomSheet(
         ),
       ),
     );
+
+RichText successAnswer(String valueInput) {
+  return RichText(
+      text: TextSpan(
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+          ),
+          children: [
+        const TextSpan(text: 'Đáp án '),
+        TextSpan(
+            text: valueInput,
+            style: const TextStyle(
+              color: Colors.green,
+              fontSize: 22,
+            )),
+        const TextSpan(text: ' của bạn là chính xác!'),
+      ]));
+}
+
+RichText errorAnswer(String valueInput, answer) {
+  return RichText(
+      text: TextSpan(
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+          ),
+          children: [
+        const TextSpan(text: 'Đáp án '),
+        TextSpan(
+            text: valueInput,
+            style: const TextStyle(
+              color: Colors.red,
+              fontSize: 22,
+            )),
+        const TextSpan(text: ' chưa chính xác! Đáp án đúng là: '),
+        TextSpan(
+            text: answer.toString(),
+            style: const TextStyle(
+              color: Colors.green,
+              fontSize: 22,
+            )),
+      ]));
+}
