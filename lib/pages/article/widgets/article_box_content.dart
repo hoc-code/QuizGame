@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:quiz_game/apps/utils/const.dart';
 import 'package:quiz_game/apps/utils/parse_html.dart';
 import 'package:quiz_game/models/question_model.dart';
-import 'package:quiz_game/pages/category/category_page.dart';
 import 'package:quiz_game/providers/question_provider.dart';
 import 'package:quiz_game/widgets/button_custom.dart';
 
